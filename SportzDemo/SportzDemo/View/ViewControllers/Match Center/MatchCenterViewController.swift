@@ -19,6 +19,7 @@ class MatchCenterViewController: UIViewController {
 
     // MARK: - setupUI()
     func setupUI() {
+        navigationController?.navigationBar.isHidden = true
         matchTableView.delegate = self
         matchTableView.dataSource = self
         matchTableView.register(UINib(nibName: ScreenConstant.matchCenterTableViewCell, bundle: nil), forCellReuseIdentifier: ScreenConstant.matchCenterTableViewCell)
@@ -36,6 +37,12 @@ extension MatchCenterViewController: UITableViewDelegate, UITableViewDataSource 
             return cell
         }
         return UITableViewCell()
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let storyboard = UIStoryboard(name: ScreenConstant.matchDetailViewController, bundle: nil)
+        let matchDetailVC = storyboard.instantiateViewController(withIdentifier: ScreenConstant.matchDetailViewController)
+        self.navigationController?.pushViewController(matchDetailVC, animated: true)
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {

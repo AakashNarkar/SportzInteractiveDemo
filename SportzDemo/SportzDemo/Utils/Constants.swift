@@ -9,6 +9,9 @@ import Foundation
 
 struct ScreenConstant {
     static let matchCenterTableViewCell = "MatchCenterTableViewCell"
+    static let matchDetailViewController = "MatchDetailViewController"
+    static let squadsCollectionViewCell = "SquadsCollectionViewCell"
+    static let infoCollectionViewCell = "InfoCollectionViewCell"
     
     static let matches = "MATCHES"
 }
