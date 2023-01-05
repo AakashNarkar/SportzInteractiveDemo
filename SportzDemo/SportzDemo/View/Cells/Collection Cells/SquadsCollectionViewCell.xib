@@ -85,6 +85,10 @@
             <size key="customSize" width="280" height="268"/>
             <connections>
                 <outlet property="squadTableView" destination="lgh-Xs-fqq" id="UDd-YX-LoA"/>
+                <outlet property="teamAFlag" destination="boT-a1-Gnk" id="Phm-ST-b8Z"/>
+                <outlet property="teamAName" destination="5vF-dZ-R9p" id="bYU-Gg-IiM"/>
+                <outlet property="teamBFlag" destination="mfA-p6-72d" id="39h-Si-533"/>
+                <outlet property="teamBName" destination="PBA-VT-T6H" id="pb4-g0-06Z"/>
             </connections>
             <point key="canvasLocation" x="314.50381679389312" y="95.774647887323951"/>
         </collectionViewCell>

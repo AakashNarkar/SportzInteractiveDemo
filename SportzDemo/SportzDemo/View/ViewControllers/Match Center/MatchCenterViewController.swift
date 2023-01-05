@@ -10,13 +10,14 @@ import UIKit
 class MatchCenterViewController: UIViewController {
 
     @IBOutlet weak var matchTableView: UITableView!
+    var viewModel: MatchCenterViewModel?
    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        viewModel = MatchCenterViewModel(delegate: self)
         setupUI()
     }
-
+    
     // MARK: - setupUI()
     func setupUI() {
         navigationController?.navigationBar.isHidden = true
@@ -29,11 +30,14 @@ class MatchCenterViewController: UIViewController {
 // MARK: - UITableViewDelegate, UITableViewDataSource
 extension MatchCenterViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        2
+        return viewModel?.numberOfRows() ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: ScreenConstant.matchCenterTableViewCell) as? MatchCenterTableViewCell {
+            if let matchDetail = viewModel?.getMatchDetal(index: indexPath.row) {
+                cell.configureCell(matchDetail: matchDetail)
+            }
             return cell
         }
         return UITableViewCell()
@@ -41,8 +45,10 @@ extension MatchCenterViewController: UITableViewDelegate, UITableViewDataSource 
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let storyboard = UIStoryboard(name: ScreenConstant.matchDetailViewController, bundle: nil)
-        let matchDetailVC = storyboard.instantiateViewController(withIdentifier: ScreenConstant.matchDetailViewController)
-        self.navigationController?.pushViewController(matchDetailVC, animated: true)
+        if let matchDetailVC = storyboard.instantiateViewController(withIdentifier: ScreenConstant.matchDetailViewController) as? MatchDetailViewController {
+            matchDetailVC.viewModel = MatchDetailsViewModel(matchDetail: viewModel?.getMatchDetal(index: indexPath.row))
+            self.navigationController?.pushViewController(matchDetailVC, animated: true)
+        }
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
@@ -56,5 +62,12 @@ extension MatchCenterViewController: UITableViewDelegate, UITableViewDataSource 
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 30
+    }
+}
+
+// MARK: - MatchCenterProtocol
+extension MatchCenterViewController: MatchCenterProtocol {
+    func didCallAPI() {
+        matchTableView.reloadData()
     }
 }

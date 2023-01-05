@@ -11,6 +11,7 @@ class MatchDetailViewController: UIViewController {
     
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var collectionView: UICollectionView!
+    var viewModel: MatchDetailsViewModel!
     
     private var previousIndex = 0
     
@@ -56,17 +57,23 @@ class MatchDetailViewController: UIViewController {
 // MARK: - UICollectionViewDelegate, UICollectionViewDataSource
 extension MatchDetailViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        3
+        return CollectionCellType.allCases.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         switch indexPath.row {
         case CollectionCellType.info.rawValue:
             if let infoCell = collectionView.dequeueReusableCell(withReuseIdentifier: ScreenConstant.infoCollectionViewCell, for: indexPath) as? InfoCollectionViewCell {
+                if let matchDetail = viewModel?.matchDetail, let info  = viewModel?.getInfoModel() {
+                    infoCell.configureCell(matchDetail: matchDetail, info: info)
+                }
                 return infoCell
             }
         case CollectionCellType.squad.rawValue:
             if let squadCell = collectionView.dequeueReusableCell(withReuseIdentifier: ScreenConstant.squadsCollectionViewCell, for: indexPath) as? SquadsCollectionViewCell {
+                if let matchDetail = viewModel?.matchDetail {
+                    squadCell.configure(teamDetail: matchDetail.teams)
+                }
                 squadCell.delegate = self
                 return squadCell
             }
@@ -98,17 +105,10 @@ extension MatchDetailViewController: UICollectionViewDelegateFlowLayout {
 
 // MARK: - SquadDelegate
 extension MatchDetailViewController: SquadDelegate {
-    func didTapOnCell(_ index: Int, _ isFirtTeam: Bool) {
-        let alert = UIAlertController(title: "SPORTZ", message: "Player Name: Dinesh arthuk \n Batting Style: RHB \n Bowling Style: N/A", preferredStyle: .alert)
+    func didTapOnCell(_ player: Player) {
+        let alert = UIAlertController(title: "SPORTZ", message: "Player Name: \(player.nameFull) \n Batting Style: \(player.batting.style.rawValue) \n Bowling Style: \(player.bowling.style)", preferredStyle: .alert)
         let action = UIAlertAction(title: "OK", style: .default)
         alert.addAction(action)
         present(alert, animated: true)
     }
-}
-
-
-enum CollectionCellType: Int, CaseIterable {
-    case info
-    case squad
-    case scorecard
 }

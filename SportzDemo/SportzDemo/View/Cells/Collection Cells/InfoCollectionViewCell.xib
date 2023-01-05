@@ -238,6 +238,18 @@
             <size key="customSize" width="382" height="258"/>
             <connections>
                 <outlet property="infoTableView" destination="Q3b-4g-9Ak" id="b3T-XW-IdK"/>
+                <outlet property="matchStatuss" destination="WzR-qF-1aY" id="n7O-5e-vFX"/>
+                <outlet property="stadiumName" destination="8N4-th-A6y" id="qgU-rB-Gag"/>
+                <outlet property="teamAFlag" destination="W0H-P1-2WJ" id="UDh-Mc-yE4"/>
+                <outlet property="teamAName" destination="KxY-Re-e8b" id="e1O-E9-ILG"/>
+                <outlet property="teamAScore" destination="gMv-t3-rr8" id="SVB-2U-aSg"/>
+                <outlet property="teamBFlag" destination="EkU-zu-NPs" id="3LJ-Tu-N3E"/>
+                <outlet property="teamBName" destination="ayD-39-9aE" id="11h-wt-FHB"/>
+                <outlet property="teamBOver" destination="W8x-dp-Grp" id="qfw-h5-Mlr"/>
+                <outlet property="teamBScore" destination="ycz-ph-QuL" id="0Bb-uZ-2Di"/>
+                <outlet property="teeamAOver" destination="Afo-er-iaa" id="MM0-me-E3A"/>
+                <outlet property="timeLabel" destination="rmT-0T-8fF" id="xPR-Pt-BXz"/>
+                <outlet property="tourName" destination="dje-kI-FyO" id="ekz-3b-rH8"/>
             </connections>
             <point key="canvasLocation" x="178.62595419847327" y="-19.718309859154932"/>
         </collectionViewCell>

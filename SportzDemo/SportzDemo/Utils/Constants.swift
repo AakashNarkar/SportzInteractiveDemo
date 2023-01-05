@@ -15,7 +15,11 @@ struct ScreenConstant {
     static let infoTableViewCell = "InfoTableViewCell"
     static let scoreCardCollectionViewCell = "ScoreCardCollectionViewCell"
     static let scoreCardTableViewCell = "ScoreCardTableViewCell"
+    static let squadTableViewCell = "SquadTableViewCell"
     
     static let matches = "MATCHES"
     static let info = "INFO"
+    static let playing11 = "PLAYING XI"
+    
+    static let baseURL = "https://demo.sportz.io/"
 }

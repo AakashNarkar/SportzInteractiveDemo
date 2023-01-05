@@ -240,6 +240,18 @@
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <connections>
                 <outlet property="mainView" destination="uag-XP-2FP" id="Xp7-nL-Ipl"/>
+                <outlet property="matchStatuss" destination="4aH-jX-lOr" id="Rm2-p7-40W"/>
+                <outlet property="stadiumName" destination="qYt-Vd-sbP" id="sN1-1i-Kc2"/>
+                <outlet property="teamAFlag" destination="VEW-pC-NIK" id="b5y-mi-fKr"/>
+                <outlet property="teamAName" destination="Lng-Zf-wnH" id="Nb8-SB-WT7"/>
+                <outlet property="teamAScore" destination="kHf-pf-JSg" id="Ig2-ww-P12"/>
+                <outlet property="teamBFlag" destination="e1Z-Ub-jbL" id="gOy-7a-pX0"/>
+                <outlet property="teamBName" destination="FuC-Ot-sZX" id="yYh-PD-lkx"/>
+                <outlet property="teamBOver" destination="MCT-eZ-ixq" id="s1D-GU-oA5"/>
+                <outlet property="teamBScore" destination="Hhz-Es-Rqi" id="Zmx-yv-AbB"/>
+                <outlet property="teeamAOver" destination="nG9-lB-Tr7" id="Fky-4u-CuA"/>
+                <outlet property="timeLabel" destination="fP1-TQ-HqU" id="4D5-0g-BnD"/>
+                <outlet property="tourName" destination="ZwI-7q-GdQ" id="I7i-n4-zjq"/>
             </connections>
             <point key="canvasLocation" x="303.81679389312978" y="71.126760563380287"/>
         </tableViewCell>

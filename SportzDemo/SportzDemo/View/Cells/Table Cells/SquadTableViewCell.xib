@@ -28,12 +28,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="194.66666666666666" height="74"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="1u4-hu-QAJ">
-                                <rect key="frame" x="16" y="22" width="162.66666666666666" height="30"/>
+                                <rect key="frame" x="16" y="13" width="162.66666666666666" height="48"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="user" translatesAutoresizingMaskIntoConstraints="NO" id="729-2b-pIO">
-                                        <rect key="frame" x="0.0" y="0.0" width="30" height="30"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="30" height="48"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="30" id="iRJ-65-jDj"/>
                                             <constraint firstAttribute="width" constant="30" id="xXb-WF-6wC"/>
                                         </constraints>
                                         <userDefinedRuntimeAttributes>
@@ -44,9 +43,9 @@
                                         </userDefinedRuntimeAttributes>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rohit Sharma" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mv8-ow-qWR">
-                                        <rect key="frame" x="40.000000000000007" y="0.0" width="122.66666666666669" height="30"/>
+                                        <rect key="frame" x="40.000000000000007" y="0.0" width="122.66666666666669" height="48"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" relation="lessThanOrEqual" constant="30" id="ZMB-SC-dvq"/>
+                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="30" id="ZMB-SC-dvq"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                         <nil key="textColor"/>
@@ -66,21 +65,20 @@
                         <rect key="frame" x="196.66666666666663" y="0.0" width="194.33333333333337" height="74"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="kgK-FU-gHM">
-                                <rect key="frame" x="16" y="22" width="162.33333333333334" height="30"/>
+                                <rect key="frame" x="16" y="13" width="162.33333333333334" height="48"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="NZ" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sms-79-P4K">
-                                        <rect key="frame" x="0.0" y="0.0" width="122.33333333333333" height="30"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="122.33333333333333" height="48"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" relation="lessThanOrEqual" constant="30" id="csP-Jz-r3E"/>
+                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="30" id="csP-Jz-r3E"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="user" translatesAutoresizingMaskIntoConstraints="NO" id="DLC-dm-37j">
-                                        <rect key="frame" x="132.33333333333334" y="0.0" width="30" height="30"/>
+                                        <rect key="frame" x="132.33333333333334" y="0.0" width="30" height="48"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="30" id="H9d-Gb-lzb"/>
                                             <constraint firstAttribute="width" constant="30" id="gH9-t1-KEJ"/>
                                         </constraints>
                                     </imageView>
@@ -121,7 +119,9 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="squadOneName" destination="Mv8-ow-qWR" id="TLM-6v-Dlg"/>
                 <outlet property="squadOneView" destination="zIU-5a-6dB" id="JjA-MO-NeW"/>
+                <outlet property="squadTwoName" destination="Sms-79-P4K" id="jPs-9b-LbA"/>
                 <outlet property="ssquadTwoView" destination="gZJ-Zf-gei" id="xGE-6E-xWd"/>
             </connections>
             <point key="canvasLocation" x="193.12977099236642" y="31.690140845070424"/>
