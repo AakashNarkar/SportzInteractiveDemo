@@ -60,6 +60,7 @@
                                 <segments>
                                     <segment title="Match Details"/>
                                     <segment title="Squad"/>
+                                    <segment title="Scorecard"/>
                                 </segments>
                                 <connections>
                                     <action selector="segmentControlAction:" destination="Y6W-OH-hqX" eventType="valueChanged" id="BhB-py-cCs"/>

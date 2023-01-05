@@ -12,6 +12,10 @@ struct ScreenConstant {
     static let matchDetailViewController = "MatchDetailViewController"
     static let squadsCollectionViewCell = "SquadsCollectionViewCell"
     static let infoCollectionViewCell = "InfoCollectionViewCell"
+    static let infoTableViewCell = "InfoTableViewCell"
+    static let scoreCardCollectionViewCell = "ScoreCardCollectionViewCell"
+    static let scoreCardTableViewCell = "ScoreCardTableViewCell"
     
     static let matches = "MATCHES"
+    static let info = "INFO"
 }

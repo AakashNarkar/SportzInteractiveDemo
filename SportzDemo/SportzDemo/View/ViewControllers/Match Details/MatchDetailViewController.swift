@@ -26,15 +26,18 @@ class MatchDetailViewController: UIViewController {
         collectionView.dataSource = self
         collectionView.register(UINib(nibName: ScreenConstant.squadsCollectionViewCell, bundle: nil), forCellWithReuseIdentifier: ScreenConstant.squadsCollectionViewCell)
         collectionView.register(UINib(nibName: ScreenConstant.infoCollectionViewCell, bundle: nil), forCellWithReuseIdentifier: ScreenConstant.infoCollectionViewCell)
+        collectionView.register(UINib(nibName: ScreenConstant.scoreCardCollectionViewCell, bundle: nil), forCellWithReuseIdentifier: ScreenConstant.scoreCardCollectionViewCell)
     }
     
     @IBAction func segmentControlAction(_ sender: UISegmentedControl) {
         let selectedIndex = sender.selectedSegmentIndex
         switch selectedIndex {
-        case 0:
-            collectionView.scrollToItem(at: IndexPath(item: 0, section: 0), at: scrollToPosition(selectedIndex), animated: true)
-        case 1:
-            collectionView.scrollToItem(at: IndexPath(item: 1, section: 0), at: .right, animated: true)
+        case CollectionCellType.info.rawValue:
+            collectionView.scrollToItem(at: IndexPath(item: CollectionCellType.info.rawValue, section: 0), at: scrollToPosition(selectedIndex), animated: true)
+        case CollectionCellType.squad.rawValue:
+            collectionView.scrollToItem(at: IndexPath(item: CollectionCellType.squad.rawValue, section: 0), at: scrollToPosition(selectedIndex), animated: true)
+        case CollectionCellType.scorecard.rawValue:
+            collectionView.scrollToItem(at: IndexPath(item: CollectionCellType.scorecard.rawValue, section: 0), at: scrollToPosition(selectedIndex), animated: true)
         default:
             break
         }
@@ -53,20 +56,23 @@ class MatchDetailViewController: UIViewController {
 // MARK: - UICollectionViewDelegate, UICollectionViewDataSource
 extension MatchDetailViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        2
+        3
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         switch indexPath.row {
         case CollectionCellType.info.rawValue:
             if let infoCell = collectionView.dequeueReusableCell(withReuseIdentifier: ScreenConstant.infoCollectionViewCell, for: indexPath) as? InfoCollectionViewCell {
-                infoCell.backgroundColor = indexPath.row == 0 ? .red : .yellow
                 return infoCell
             }
         case CollectionCellType.squad.rawValue:
             if let squadCell = collectionView.dequeueReusableCell(withReuseIdentifier: ScreenConstant.squadsCollectionViewCell, for: indexPath) as? SquadsCollectionViewCell {
                 squadCell.delegate = self
                 return squadCell
+            }
+        case CollectionCellType.scorecard.rawValue:
+            if let scoreCardCell = collectionView.dequeueReusableCell(withReuseIdentifier: ScreenConstant.scoreCardCollectionViewCell, for: indexPath) as? ScoreCardCollectionViewCell {
+                return scoreCardCell
             }
         default:
             break
@@ -101,7 +107,7 @@ extension MatchDetailViewController: SquadDelegate {
 }
 
 
-enum CollectionCellType: Int {
+enum CollectionCellType: Int, CaseIterable {
     case info
     case squad
     case scorecard
