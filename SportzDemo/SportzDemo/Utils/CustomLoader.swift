@@ -24,36 +24,35 @@ class CustomLoader {
         effectView.clipsToBounds = true
         effectView.backgroundColor = UIColor.black.withAlphaComponent(0.3)
         textLabel.textColor = .white
-        textLabel.text = "Loading"
+        textLabel.text = ScreenConstant.loading
     }
     
     func showLoader() {
         setupLoader()
         
-        let holdingView = UIApplication.shared.windows.first!.rootViewController!.view
- 
-        DispatchQueue.main.async {
-            self.effectView.frame = CGRect(x: 0, y: 0, width: 80, height: 80)
-            self.effectView.center = holdingView?.center ?? CGPoint()
-            self.effectView.layer.cornerRadius = 15
-            self.effectView.layer.masksToBounds = true
-            
-            self.activityIndicator.frame = CGRect(x: 20, y: 10, width: 40, height: 40)
-            self.activityIndicator.startAnimating()
-            self.effectView.addSubview(self.textLabel)
-            self.effectView.addSubview(self.activityIndicator)
-            holdingView?.addSubview(self.effectView)
-            UIApplication.shared.beginIgnoringInteractionEvents()
+        if let holdingView = UIApplication.shared.windows.first?.rootViewController?.view {
+            DispatchQueue.main.async { [weak self] in
+                guard let strongSelf = self else { return }
+                strongSelf.effectView.frame = CGRect(x: 0, y: 0, width: 80, height: 80)
+                strongSelf.effectView.center = holdingView.center
+                strongSelf.effectView.layer.cornerRadius = 15
+                strongSelf.effectView.layer.masksToBounds = true
+                strongSelf.activityIndicator.frame = CGRect(x: 20, y: 10, width: 40, height: 40)
+                strongSelf.activityIndicator.startAnimating()
+                strongSelf.effectView.addSubview(strongSelf.textLabel)
+                strongSelf.effectView.addSubview(strongSelf.activityIndicator)
+                holdingView.addSubview(strongSelf.effectView)
+            }
         }
     }
     
     func removeLoader(){
-        DispatchQueue.main.async {
-            self.activityIndicator.stopAnimating()
-            self.activityIndicator.removeFromSuperview()
-            self.effectView.removeFromSuperview()
-            self.textLabel.removeFromSuperview()
-            UIApplication.shared.endIgnoringInteractionEvents()
+        DispatchQueue.main.async { [weak self] in
+            guard let strongSelf = self else { return }
+            strongSelf.activityIndicator.stopAnimating()
+            strongSelf.activityIndicator.removeFromSuperview()
+            strongSelf.effectView.removeFromSuperview()
+            strongSelf.textLabel.removeFromSuperview()
         }
     }
 }

@@ -23,15 +23,9 @@ class ScoreCardTableViewCell: UITableViewCell {
     @IBOutlet weak var sixHeaderLabel: UILabel!
     @IBOutlet weak var srHeaderLabel: UILabel!
     @IBOutlet weak var batterHeaderLabel: UILabel!
-    
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
 
     func configure(indexPath: IndexPath, inning: Inning, commonPlayerArray: [ScoreCardModel]) {
         let player = commonPlayerArray[indexPath.row]
-        print("------------\(player.playerName)")
         if indexPath.row < inning.batsmen.count {
             wicketDescLabel.text = inning.batsmen[indexPath.row].howout
             wicketDescLabel.isHidden = false

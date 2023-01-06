@@ -8,7 +8,6 @@
 import UIKit
 
 class InfoCollectionViewCell: UICollectionViewCell {
-
     @IBOutlet weak var infoTableView: UITableView!
     @IBOutlet weak var teamAName: UILabel!
     @IBOutlet weak var teamBName: UILabel!
@@ -37,7 +36,6 @@ class InfoCollectionViewCell: UICollectionViewCell {
     }
     
     func configure(matchDetail: MatchDetailResponse, info: [InfoModel]) {
-        let tourNameString = "\(matchDetail.matchdetail.match.number) | \(matchDetail.matchdetail.series.tourName)"
         let keys = matchDetail.teams.keys.sorted(by: <)
         teamAName.text = matchDetail.teams[keys.first ?? "0"]?.nameShort
         teamBName.text = matchDetail.teams[keys.last ?? "1"]?.nameShort
@@ -49,7 +47,6 @@ class InfoCollectionViewCell: UICollectionViewCell {
         matchStatuss.text = matchDetail.matchdetail.result
         teamAFlag.image = UIImage(named: matchDetail.teams[keys.first ?? "0"]?.nameShort ?? "")
         teamBFlag.image = UIImage(named: matchDetail.teams[keys.last ?? "1"]?.nameShort ?? "")
-        
         self.info = info
     }
 }
@@ -85,6 +82,6 @@ extension InfoCollectionViewCell: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        50
+        return 50
     }
 }

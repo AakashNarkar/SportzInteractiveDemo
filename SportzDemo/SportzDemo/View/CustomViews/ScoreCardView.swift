@@ -17,10 +17,6 @@ class ScoreCardView: UIView {
         let nib = Bundle.main.loadNibNamed(ScreenConstant.scoreCardView, owner: nil, options: nil)?.first as? ScoreCardView
         return nib ?? ScoreCardView()
     }
-
-    override class func awakeFromNib() {
-        super.awakeFromNib()
-    }
        
     func configure(team: String, score: String, isSectionSelected: Bool, section: Int) {
         teamName.text = team

@@ -9,6 +9,7 @@ import Foundation
 
 protocol MatchCenterProtocol: AnyObject {
     func didCallAPI()
+    func didApiFailed(error: String)
 }
 
 class MatchCenterViewModel {
@@ -31,7 +32,7 @@ class MatchCenterViewModel {
             case .success(let model):
                 strongself.responseList.append(model)
             case .failure(let error):
-                print(error)
+                strongself.delegate?.didApiFailed(error: error.localizedDescription)
             }
             strongself.group.leave()
         }
@@ -44,7 +45,7 @@ class MatchCenterViewModel {
             case .success(let model):
                 strongself.responseList.append(model)
             case .failure(let error):
-                print(error)
+                strongself.delegate?.didApiFailed(error: error.localizedDescription)
             }
             strongself.group.leave()
         }
