@@ -10,8 +10,6 @@ import UIKit
 class InfoCollectionViewCell: UICollectionViewCell {
 
     @IBOutlet weak var infoTableView: UITableView!
-    @IBOutlet weak var tourName: UILabel!
-    @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var teamAName: UILabel!
     @IBOutlet weak var teamBName: UILabel!
     @IBOutlet weak var teamAScore: UILabel!
@@ -38,10 +36,8 @@ class InfoCollectionViewCell: UICollectionViewCell {
         infoTableView.register(UINib(nibName: ScreenConstant.infoTableViewCell, bundle: nil), forCellReuseIdentifier: ScreenConstant.infoTableViewCell)
     }
     
-    func configureCell(matchDetail: MatchDetailResponse, info: [InfoModel]) {
+    func configure(matchDetail: MatchDetailResponse, info: [InfoModel]) {
         let tourNameString = "\(matchDetail.matchdetail.match.number) | \(matchDetail.matchdetail.series.tourName)"
-        tourName.text = tourNameString
-        timeLabel.text = "\(matchDetail.matchdetail.match.date) | \(matchDetail.matchdetail.match.time)"
         let keys = matchDetail.teams.keys.sorted(by: <)
         teamAName.text = matchDetail.teams[keys.first ?? "0"]?.nameShort
         teamBName.text = matchDetail.teams[keys.last ?? "1"]?.nameShort

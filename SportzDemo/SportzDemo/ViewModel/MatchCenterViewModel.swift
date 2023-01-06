@@ -67,7 +67,10 @@ class MatchCenterViewModel {
         return responseList.count
     }
     
-    func getMatchDetal(index: Int) -> MatchDetailResponse {
-        return responseList[index]
+    func getMatchDetal(index: Int, isAsc: Bool) -> MatchDetailResponse {
+        if isAsc {
+            return responseList.sorted(by: { $0.matchdetail.match.date < $1.matchdetail.match.date })[index]
+        }
+        return responseList.sorted(by: { $0.matchdetail.match.date > $1.matchdetail.match.date })[index]
     }
 }

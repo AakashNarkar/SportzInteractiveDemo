@@ -39,7 +39,7 @@ class MatchCenterTableViewCell: UITableViewCell {
     func configureCell(matchDetail: MatchDetailResponse) {
         let tourNameString = "\(matchDetail.matchdetail.match.number) | \(matchDetail.matchdetail.series.tourName)"
         tourName.text = tourNameString
-        timeLabel.text = "\(matchDetail.matchdetail.match.date) | \(matchDetail.matchdetail.match.time)"
+        timeLabel.text = "\(matchDetail.matchdetail.match.date.getFormattedDate()) | \(matchDetail.matchdetail.match.time)"
         let keys = matchDetail.teams.keys.sorted(by: <)
         teamAName.text = matchDetail.teams[keys.first ?? "0"]?.nameShort
         teamBName.text = matchDetail.teams[keys.last ?? "1"]?.nameShort

@@ -16,6 +16,10 @@ struct ScreenConstant {
     static let scoreCardCollectionViewCell = "ScoreCardCollectionViewCell"
     static let scoreCardTableViewCell = "ScoreCardTableViewCell"
     static let squadTableViewCell = "SquadTableViewCell"
+    static let playerProfileViewController = "PlayerProfileViewController"
+    
+    static let scoreCardView = "ScoreCardView"
+    static let matchCenterHeader = "MatchCenterHeader"
     
     static let matches = "MATCHES"
     static let info = "INFO"

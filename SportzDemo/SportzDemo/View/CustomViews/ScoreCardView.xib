@@ -39,24 +39,35 @@
                         </imageView>
                     </subviews>
                 </stackView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AzF-Wi-Pbu">
+                    <rect key="frame" x="0.0" y="94" width="561" height="1"/>
+                    <color key="backgroundColor" systemColor="systemGray4Color"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="1" id="Wz2-BS-uAm"/>
+                    </constraints>
+                </view>
             </subviews>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
-            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
+                <constraint firstItem="AzF-Wi-Pbu" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="1KB-fv-uSj"/>
+                <constraint firstAttribute="bottom" secondItem="AzF-Wi-Pbu" secondAttribute="bottom" id="3nQ-Di-bTJ"/>
+                <constraint firstAttribute="trailing" secondItem="AzF-Wi-Pbu" secondAttribute="trailing" id="NNY-Xn-4GE"/>
                 <constraint firstAttribute="trailing" secondItem="5Bp-qW-a48" secondAttribute="trailing" constant="16" id="W6t-RH-sbh"/>
                 <constraint firstItem="5Bp-qW-a48" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" constant="1" id="Yq5-Kr-vaD"/>
                 <constraint firstItem="ybb-eh-FWW" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="16" id="Zsg-Kw-nzG"/>
                 <constraint firstItem="ybb-eh-FWW" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" constant="1" id="sTv-Na-dw8"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="dropDownImage" destination="KXj-Rl-81u" id="tsf-Os-J7E"/>
+                <outlet property="scoreLabel" destination="gJY-lm-y7c" id="v9Z-bl-YwV"/>
+                <outlet property="teamName" destination="ybb-eh-FWW" id="WqJ-y0-L2e"/>
+            </connections>
             <point key="canvasLocation" x="133.58778625954199" y="-246.12676056338029"/>
         </view>
     </objects>
     <resources>
         <image name="chevron.down" catalog="system" width="128" height="70"/>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
         <systemColor name="systemGray4Color">
             <color red="0.81960784313725488" green="0.81960784313725488" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>

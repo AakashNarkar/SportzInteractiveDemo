@@ -104,6 +104,7 @@
                     </view>
                     <connections>
                         <outlet property="collectionView" destination="mIf-8e-dOD" id="hUj-3a-w2w"/>
+                        <outlet property="segmentControl" destination="OMa-KQ-qbv" id="Rat-kQ-l15"/>
                         <outlet property="titleLabel" destination="plp-7B-bUx" id="NgA-bz-Wrg"/>
                     </connections>
                 </viewController>

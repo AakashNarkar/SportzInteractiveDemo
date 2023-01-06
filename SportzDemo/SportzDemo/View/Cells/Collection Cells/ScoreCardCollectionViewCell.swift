@@ -10,12 +10,12 @@ import UIKit
 class ScoreCardCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var scoreCardTableView: UITableView!
+    @IBOutlet weak var statusLabel: UILabel!
     
+    var matchDetail: MatchDetailResponse?
     var hiddenSections = Set<Int>()
-    var teams = [
-        ScoreCardModel(teamName: "IND", batter: ["Rohit", "Kohli"], extras: "2", total: "3", bowler: ["Hardik", "Shami"], fallOfWickets: ["Rohit", "Kohli"], isExpanded: false),
-        ScoreCardModel(teamName: "NZ", batter: ["Root", "Boot"], extras: "2", total: "3", bowler: ["Hardik", "Shami"], fallOfWickets: ["Root", "BBoot"], isExpanded: false)
-    ]
+    var viewModel: MatchDetailsViewModel?
+    var isSectionSelected = [false, false]
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -29,15 +29,22 @@ class ScoreCardCollectionViewCell: UICollectionViewCell {
         scoreCardTableView.register(UINib(nibName: ScreenConstant.scoreCardTableViewCell, bundle: nil), forCellReuseIdentifier: ScreenConstant.scoreCardTableViewCell)
     }
     
+    func configure(matchDetail: MatchDetailResponse, viewModel: MatchDetailsViewModel) {
+        self.matchDetail = matchDetail
+        self.statusLabel.text = matchDetail.matchdetail.result
+        self.viewModel = viewModel
+    }
+    
     @objc func tapAction(sender: UITapGestureRecognizer) {
         let section = sender.view?.tag ?? 0
         
         func indexPathsForSection() -> [IndexPath] {
             var indexPaths = [IndexPath]()
             
-            for row in 0..<self.teams[section].batter.count {
-                indexPaths.append(IndexPath(row: row,
-                                            section: section))
+            guard let innings = matchDetail?.innings else { return indexPaths }
+            
+            for row in 0..<(innings[section].batsmen.count + innings[section].bowlers.count + innings[section].fallofWickets.count) {
+                indexPaths.append(IndexPath(row: row, section: section))
             }
             
             return indexPaths
@@ -47,30 +54,38 @@ class ScoreCardCollectionViewCell: UICollectionViewCell {
             self.hiddenSections.remove(section)
             self.scoreCardTableView.insertRows(at: indexPathsForSection(),
                                       with: .fade)
+            isSectionSelected[sender.view?.tag ?? 0] = false
         } else {
             self.hiddenSections.insert(section)
             self.scoreCardTableView.deleteRows(at: indexPathsForSection(),
                                       with: .fade)
+            isSectionSelected[sender.view?.tag ?? 0] = true
         }
+        scoreCardTableView.reloadData()
     }
 }
 
 // MARK: -  UITableViewDelegate, UITableViewDataSource
 extension ScoreCardCollectionViewCell: UITableViewDelegate, UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
-        teams.count
+        return matchDetail?.innings.count ?? 0
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if self.hiddenSections.contains(section) {
             return 0
         }
-        return teams[section].batter.count
+        if let innings = matchDetail?.innings {
+            return innings[section].batsmen.count + innings[section].bowlers.count + innings[section].fallofWickets.count
+        }
+        return 0
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: ScreenConstant.scoreCardTableViewCell) as? ScoreCardTableViewCell {
-            cell.batterView.isHidden = indexPath.row != 0
+            if let inning = matchDetail?.innings[indexPath.section], let commonPlayerArray = viewModel?.getCommonScoreCardPlayerNameArray(section: indexPath.section) {
+                cell.configure(indexPath: indexPath, inning: inning, commonPlayerArray: commonPlayerArray)
+            }
             return cell
         }
         return UITableViewCell()
@@ -78,32 +93,22 @@ extension ScoreCardCollectionViewCell: UITableViewDelegate, UITableViewDataSourc
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let view = ScoreCardView.loadFromNib()
-        view.tag = section
+        let keys = matchDetail?.teams.keys.sorted(by: <)
+        let score = "\(matchDetail?.innings[section].total ?? "0")/\(matchDetail?.innings[section].wickets ?? "0") (\(matchDetail?.innings[section].overs ?? "0"))"
+        view.configure(team: matchDetail?.teams[section == 0 ? (keys?.first ?? "0") : (keys?.last ?? "1")]?.nameShort ?? "", score: score, isSectionSelected: isSectionSelected[section], section: section)
         let tap = UITapGestureRecognizer(target: self, action: #selector(tapAction(sender:)))
         view.addGestureRecognizer(tap)
         return view
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        30
+        return 50
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        indexPath.row == 0 ? 75 : 50
+        if let innings = matchDetail?.innings {
+            return ((indexPath.row == 0) || (indexPath.row == innings[indexPath.section].batsmen.count) || (indexPath.row == (innings[indexPath.section].batsmen.count + innings[indexPath.section].bowlers.count))) ? 75 : 50
+        }
+        return 50
     }
-}
-
-struct ScoreCardModel {
-    var teamName: String
-    var batter: [String]
-    var extras: String
-    var total: String
-    var bowler: [String]
-    var fallOfWickets: [String]
-    var isExpanded: Bool
-}
-
-enum Ssection: Int {
-    case teamA
-    case teamB
 }

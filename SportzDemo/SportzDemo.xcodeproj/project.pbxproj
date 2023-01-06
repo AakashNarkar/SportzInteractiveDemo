@@ -33,6 +33,8 @@
 		921781AA29667E09000EA55E /* ScoreCardCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 921781A829667E09000EA55E /* ScoreCardCollectionViewCell.xib */; };
 		921781AD2966A84C000EA55E /* ScoreCardTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 921781AB2966A84C000EA55E /* ScoreCardTableViewCell.swift */; };
 		921781AE2966A84C000EA55E /* ScoreCardTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 921781AC2966A84C000EA55E /* ScoreCardTableViewCell.xib */; };
+		927F2C462968201700408A1B /* MatchCenterHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 927F2C452968201700408A1B /* MatchCenterHeader.xib */; };
+		927F2C482968203400408A1B /* MatchCenterHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 927F2C472968203400408A1B /* MatchCenterHeader.swift */; };
 		92D792362966B27F000170CC /* ScoreCardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 92D792352966B27F000170CC /* ScoreCardView.xib */; };
 		92D7923A2966B2AD000170CC /* ScoreCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92D792392966B2AD000170CC /* ScoreCardView.swift */; };
 		92D7923C2966BD4A000170CC /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92D7923B2966BD4A000170CC /* NetworkManager.swift */; };
@@ -95,6 +97,8 @@
 		921781A829667E09000EA55E /* ScoreCardCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ScoreCardCollectionViewCell.xib; sourceTree = "<group>"; };
 		921781AB2966A84C000EA55E /* ScoreCardTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreCardTableViewCell.swift; sourceTree = "<group>"; };
 		921781AC2966A84C000EA55E /* ScoreCardTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ScoreCardTableViewCell.xib; sourceTree = "<group>"; };
+		927F2C452968201700408A1B /* MatchCenterHeader.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MatchCenterHeader.xib; sourceTree = "<group>"; };
+		927F2C472968203400408A1B /* MatchCenterHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchCenterHeader.swift; sourceTree = "<group>"; };
 		92D792352966B27F000170CC /* ScoreCardView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ScoreCardView.xib; sourceTree = "<group>"; };
 		92D792392966B2AD000170CC /* ScoreCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreCardView.swift; sourceTree = "<group>"; };
 		92D7923B2966BD4A000170CC /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
@@ -237,8 +241,10 @@
 		9217817C2965D15F000EA55E /* CustomViews */ = {
 			isa = PBXGroup;
 			children = (
-				92D792352966B27F000170CC /* ScoreCardView.xib */,
 				92D792392966B2AD000170CC /* ScoreCardView.swift */,
+				92D792352966B27F000170CC /* ScoreCardView.xib */,
+				927F2C472968203400408A1B /* MatchCenterHeader.swift */,
+				927F2C452968201700408A1B /* MatchCenterHeader.xib */,
 			);
 			path = CustomViews;
 			sourceTree = "<group>";
@@ -418,6 +424,7 @@
 				9205374B29654D4800D02B5B /* LaunchScreen.storyboard in Resources */,
 				921781922965F6EA000EA55E /* SquadsCollectionViewCell.xib in Resources */,
 				92D792362966B27F000170CC /* ScoreCardView.xib in Resources */,
+				927F2C462968201700408A1B /* MatchCenterHeader.xib in Resources */,
 				9205374829654D4800D02B5B /* Assets.xcassets in Resources */,
 				921781A62966765A000EA55E /* InfoTableViewCell.xib in Resources */,
 				921781802965D1F5000EA55E /* MatchCenterTableViewCell.xib in Resources */,
@@ -467,6 +474,7 @@
 				921781AD2966A84C000EA55E /* ScoreCardTableViewCell.swift in Sources */,
 				9217817F2965D1F5000EA55E /* MatchCenterTableViewCell.swift in Sources */,
 				92D7923C2966BD4A000170CC /* NetworkManager.swift in Sources */,
+				927F2C482968203400408A1B /* MatchCenterHeader.swift in Sources */,
 				92D7923E2966BEFD000170CC /* MatchDetailResponse.swift in Sources */,
 				92D792502966ED25000170CC /* InfoModel.swift in Sources */,
 				9205374129654D4400D02B5B /* SceneDelegate.swift in Sources */,
@@ -578,7 +586,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -632,7 +640,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;

@@ -73,7 +73,6 @@ extension SquadsCollectionViewCell: UITableViewDelegate, UITableViewDataSource {
         let headerView = UIView(frame: CGRect(x: 0, y: 0, width: squadTableView.bounds.width, height: 30))
         headerView.backgroundColor = .systemGray4
         let label = UILabel(frame: CGRect(x: 0, y: 5, width: 100, height: 20))
-        label.text = ScreenConstant.matches
         label.font = .systemFont(ofSize: 14, weight: .bold)
         label.text = ScreenConstant.playing11
         label.center = headerView.center
