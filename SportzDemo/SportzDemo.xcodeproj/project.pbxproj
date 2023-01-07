@@ -46,7 +46,8 @@
 		92D7924A2966D16F000170CC /* CustomLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92D792492966D16F000170CC /* CustomLoader.swift */; };
 		92D7924C2966DDDC000170CC /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92D7924B2966DDDC000170CC /* Extensions.swift */; };
 		92D7924E2966E51E000170CC /* MatchDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92D7924D2966E51E000170CC /* MatchDetailsViewModel.swift */; };
-		92D792502966ED25000170CC /* InfoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92D7924F2966ED25000170CC /* InfoModel.swift */; };
+		92D792502966ED25000170CC /* CommonModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92D7924F2966ED25000170CC /* CommonModels.swift */; };
+		92E79FE229689506007E74C7 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92E79FE129689506007E74C7 /* BaseViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -110,7 +111,8 @@
 		92D792492966D16F000170CC /* CustomLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomLoader.swift; sourceTree = "<group>"; };
 		92D7924B2966DDDC000170CC /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		92D7924D2966E51E000170CC /* MatchDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchDetailsViewModel.swift; sourceTree = "<group>"; };
-		92D7924F2966ED25000170CC /* InfoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoModel.swift; sourceTree = "<group>"; };
+		92D7924F2966ED25000170CC /* CommonModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonModels.swift; sourceTree = "<group>"; };
+		92E79FE129689506007E74C7 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -161,13 +163,12 @@
 		9205373D29654D4400D02B5B /* SportzDemo */ = {
 			isa = PBXGroup;
 			children = (
+				92E79FE0296893CD007E74C7 /* App */,
 				921781772965D0A2000EA55E /* Model */,
 				921781782965D10E000EA55E /* View */,
 				921781792965D119000EA55E /* ViewModel */,
 				921781812965D410000EA55E /* Networking */,
 				921781822965EC85000EA55E /* Utils */,
-				9205373E29654D4400D02B5B /* AppDelegate.swift */,
-				9205374029654D4400D02B5B /* SceneDelegate.swift */,
 				9205374729654D4800D02B5B /* Assets.xcassets */,
 				9205374929654D4800D02B5B /* LaunchScreen.storyboard */,
 				9205374C29654D4800D02B5B /* Info.plist */,
@@ -196,7 +197,7 @@
 			isa = PBXGroup;
 			children = (
 				92D7923D2966BEFD000170CC /* MatchDetailResponse.swift */,
-				92D7924F2966ED25000170CC /* InfoModel.swift */,
+				92D7924F2966ED25000170CC /* CommonModels.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -225,6 +226,7 @@
 			children = (
 				921781852965EF37000EA55E /* Match Center */,
 				921781862965EF48000EA55E /* Match Details */,
+				92E79FE129689506007E74C7 /* BaseViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -314,6 +316,15 @@
 				921781A829667E09000EA55E /* ScoreCardCollectionViewCell.xib */,
 			);
 			path = "Collection Cells";
+			sourceTree = "<group>";
+		};
+		92E79FE0296893CD007E74C7 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				9205373E29654D4400D02B5B /* AppDelegate.swift */,
+				9205374029654D4400D02B5B /* SceneDelegate.swift */,
+			);
+			path = App;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -476,7 +487,8 @@
 				92D7923C2966BD4A000170CC /* NetworkManager.swift in Sources */,
 				927F2C482968203400408A1B /* MatchCenterHeader.swift in Sources */,
 				92D7923E2966BEFD000170CC /* MatchDetailResponse.swift in Sources */,
-				92D792502966ED25000170CC /* InfoModel.swift in Sources */,
+				92D792502966ED25000170CC /* CommonModels.swift in Sources */,
+				92E79FE229689506007E74C7 /* BaseViewController.swift in Sources */,
 				9205374129654D4400D02B5B /* SceneDelegate.swift in Sources */,
 				92D7923A2966B2AD000170CC /* ScoreCardView.swift in Sources */,
 				921781A929667E09000EA55E /* ScoreCardCollectionViewCell.swift in Sources */,

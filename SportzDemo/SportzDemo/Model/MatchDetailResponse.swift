@@ -7,6 +7,7 @@
 
 import Foundation
 
+// MARK: - MatchDetailResponse
 struct MatchDetailResponse: Codable {
     let matchdetail: Matchdetail
     let nuggets: [String]

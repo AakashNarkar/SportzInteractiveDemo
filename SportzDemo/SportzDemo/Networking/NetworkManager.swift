@@ -21,7 +21,7 @@ class NetworkManager {
         URLSession.shared.dataTask(with: urlRequest) { data, response, error in
             CustomLoader.sharedInstance.removeLoader()
             if let data = data , error == nil , let respo = response as? HTTPURLResponse {
-                if respo.statusCode >= 200 , respo.statusCode <= 300 {
+                if respo.statusCode == 200 {
                     completion(.success(data))
                 } else {
                     completion(.failure(error ?? CustomError.apiFailed))

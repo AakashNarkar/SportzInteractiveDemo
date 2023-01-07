@@ -7,7 +7,7 @@
 
 import UIKit
 
-class MatchCenterViewController: UIViewController {
+class MatchCenterViewController: BaseViewController {
 
     @IBOutlet weak var matchTableView: UITableView!
     var viewModel: MatchCenterViewModel?
@@ -21,7 +21,6 @@ class MatchCenterViewController: UIViewController {
     
     // MARK: - setupUI()
     func setupUI() {
-        navigationController?.navigationBar.isHidden = true
         matchTableView.delegate = self
         matchTableView.dataSource = self
         matchTableView.register(UINib(nibName: ScreenConstant.matchCenterTableViewCell, bundle: nil), forCellReuseIdentifier: ScreenConstant.matchCenterTableViewCell)
@@ -68,6 +67,13 @@ extension MatchCenterViewController: UITableViewDelegate, UITableViewDataSource 
 extension MatchCenterViewController: MatchCenterProtocol {
     func didCallAPI() {
         matchTableView.reloadData()
+    }
+    
+    func didApiFailed(error: String) {
+        DispatchQueue.main.async { [weak self] in
+            guard let strongSelf = self else { return }
+            strongSelf.showAlert(message: error)
+        }
     }
 }
 

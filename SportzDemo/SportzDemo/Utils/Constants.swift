@@ -25,5 +25,10 @@ struct ScreenConstant {
     static let info = "INFO"
     static let playing11 = "PLAYING XI"
     
+    static let appName = "SPORTZ"
+    static let ok = "OK"
+    static let na = "N/A"
+    static let loading = "Loading"
+    
     static let baseURL = "https://demo.sportz.io/"
 }

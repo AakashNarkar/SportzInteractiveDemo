@@ -7,7 +7,7 @@
 
 import UIKit
 
-class MatchDetailViewController: UIViewController {
+class MatchDetailViewController: BaseViewController {
     
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var segmentControl: UISegmentedControl!
@@ -125,9 +125,9 @@ extension MatchDetailViewController: UICollectionViewDelegateFlowLayout {
 // MARK: - SquadDelegate
 extension MatchDetailViewController: SquadDelegate {
     func didTapOnCell(_ player: Player) {
-        let alert = UIAlertController(title: "SPORTZ", message: "Player Name: \(player.nameFull) \n Batting Style: \(player.batting.style.rawValue) \n Bowling Style: \(player.bowling.style == "" ? "N/A" : player.bowling.style)", preferredStyle: .alert)
-        let action = UIAlertAction(title: "OK", style: .default)
-        alert.addAction(action)
-        present(alert, animated: true)
+        DispatchQueue.main.async { [weak self] in
+            guard let strongSelf = self else { return }
+            strongSelf.showAlert(message: "Player Name: \(player.nameFull) \n Batting Style: \(player.batting.style.rawValue) \n Bowling Style: \(player.bowling.style == "" ? ScreenConstant.na : player.bowling.style)")
+        }
     }
 }
