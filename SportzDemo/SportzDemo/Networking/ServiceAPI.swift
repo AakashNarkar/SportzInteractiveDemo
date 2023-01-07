@@ -7,11 +7,15 @@
 
 import Foundation
 
+// MARK: - APIResult
+typealias APIResponse = (Result<MatchDetailResponse, Error>)
+
 class ServiceAPI {
     let networkManager = NetworkManager.shared
     
-    func getMatchDetails(apiMethod: APIManager, completion: @escaping (Result<MatchDetailResponse, Error>) -> ()) {
-        networkManager.apiCall(requstMethod: apiMethod) { result in
+    func getMatchDetails(apiMethod: APIManager, completion: @escaping (APIResponse) -> ()) {
+        networkManager.apiCall(requstMethod: apiMethod) { [weak self] result in
+            guard let _ = self else { return }
             switch result {
             case .success(let data):
                 if let response = parseData(data: data, model: MatchDetailResponse.self) {

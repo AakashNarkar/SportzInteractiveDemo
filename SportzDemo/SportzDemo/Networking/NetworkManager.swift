@@ -7,13 +7,17 @@
 
 import Foundation
 
+// MARK: - APIResult
+typealias APIResult = (Result<Data, Error>)
+
+// MARK: - NetworkManager
 class NetworkManager {
     
     static let shared = NetworkManager()
     
     private init() { }
     
-    func apiCall(requstMethod: APIManager, completion: @escaping (Result<Data, Error>) -> ()) {
+    func apiCall(requstMethod: APIManager, completion: @escaping (APIResult) -> ()) {
         var urlRequest = URLRequest(url: requstMethod.getUrl)
         urlRequest.httpMethod = requstMethod.apiMethod
         
